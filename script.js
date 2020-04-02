@@ -19,9 +19,9 @@ window.onload=function(){
     if(numprev!=null){
         var nnew=numactual-numprev;
         if(nnew!=0){
-            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NUOVI GIOCHI! </h1>");
+            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NEW GAMES! </h1>");
         }
-        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" giochi presenti</div>");
+        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" total games</div>");
 
         var popgamescolumn=document.getElementsByClassName("col-lg-4")[0]; //elemento colonna "popular games"
         var infocolumn=document.createElement("div"); //elemento colonna "informazioni" da aggiungere per i nuovi giochi inseriti
@@ -30,7 +30,7 @@ window.onload=function(){
         var listnew=document.createElement("ul"); //lista nuova da inserire. per aggiungere elementi alla lista basta fare listnew.appendchild(li), dove li è una entry da creare
         listnew.className="listanuovi";
 
-        infocolumn.textContent=""+nnew+" nuovi giochi";
+        infocolumn.textContent=""+nnew+" new games";
         //e poi cerco
         for(let element of elements){
             let link=element.children[0].href; //prende i link
