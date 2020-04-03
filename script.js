@@ -8,7 +8,7 @@
 // @grant        none
 // ==/UserScript==
 
-window.onload=function(){
+window.onload=function() {
     'use strict';
 
     var numprev=window.localStorage.getItem("numprev"); //numero di giochi precedenti all'esecuzione di questo script;
@@ -19,9 +19,9 @@ window.onload=function(){
     if(numprev!=null){
         var nnew=numactual-numprev;
         if(nnew!=0){
-            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NEW GAMES! </h1>");
+            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NUOVI GIOCHI! </h1>");
         }
-        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" total games</div>");
+        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" giochi presenti</div>");
 
         var popgamescolumn=document.getElementsByClassName("col-lg-4")[0]; //elemento colonna "popular games"
         var infocolumn=document.createElement("div"); //elemento colonna "informazioni" da aggiungere per i nuovi giochi inseriti
@@ -30,7 +30,7 @@ window.onload=function(){
         var listnew=document.createElement("ul"); //lista nuova da inserire. per aggiungere elementi alla lista basta fare listnew.appendchild(li), dove li è una entry da creare
         listnew.className="listanuovi";
 
-        infocolumn.textContent=""+nnew+" new games";
+        infocolumn.textContent=""+nnew+" nuovi giochi";
         //e poi cerco
         for(let element of elements){
             let link=element.children[0].href; //prende i link
@@ -66,14 +66,15 @@ window.onload=function(){
             btn.style.visibility = "hidden";
         }
         btn.onclick=function(){
-            window.localStorage.setItem("numprev",numactual+nnew); //lo setto direttamente nel local storage, poichè appena lo script parte la prima cosa che controlla è questa variabile nel local storage
+            window.localStorage.setItem("numprev",numactual); //lo setto direttamente nel local storage, poichè appena lo script parte la prima cosa che controlla è questa variabile nel local storage
             //scelgo di rifare le stesse operaioni fatte per trovare i giochi nuovi, poichè scandire listnew è oneroso. CONTROLLARE IN FUTURO.
             for(let element of elements){
-            let link=element.children[0].href; //prende i link
-            let text=element.children[0].text; //prende il testo
-            if(window.localStorage.getItem(text)==null){ //se non si trova nel local storage
-                window.localStorage.setItem(text,link); //lo aggiungo al local storage (mentre prima lo aggiungevo alla lista da mostrare a schermo)
+                let link=element.children[0].href; //prende i link
+                let text=element.children[0].text; //prende il testo
+                if(window.localStorage.getItem(text)==null){ //se non si trova nel local storage
+                    window.localStorage.setItem(text,link); //lo aggiungo al local storage (mentre prima lo aggiungevo alla lista da mostrare a schermo)
             }
+            window.alert("New games added in the local storage!");
         }
         }
         popgamescolumn.insertAdjacentElement("beforebegin",btn); //inserisco un button
@@ -89,7 +90,6 @@ window.onload=function(){
                 }
                 window.localStorage.setItem("numprev",numprev);
             }
-        window.alert("New games added in the local storage!");
     }
 
 }();
