@@ -73,9 +73,9 @@ window.onload=function() {
                 let text=element.children[0].text; //prende il testo
                 if(window.localStorage.getItem(text)==null){ //se non si trova nel local storage
                     window.localStorage.setItem(text,link); //lo aggiungo al local storage (mentre prima lo aggiungevo alla lista da mostrare a schermo)
+                }
             }
             window.alert("New games added in the local storage!");
-        }
         }
         popgamescolumn.insertAdjacentElement("beforebegin",btn); //inserisco un button
      }
