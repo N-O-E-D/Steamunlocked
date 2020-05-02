@@ -17,20 +17,17 @@ window.onload=function() {
     var pos=document.getElementsByClassName("blog-content")[0]; //banner "All Games (A-Z)"
 
     if(numprev!=null){
-        var nnew=numactual-numprev;
-        if(nnew!=0){
-            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NUOVI GIOCHI! </h1>");
-        }
-        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" giochi presenti</div>");
 
         var popgamescolumn=document.getElementsByClassName("col-lg-4")[0]; //elemento colonna "popular games"
         var infocolumn=document.createElement("div"); //elemento colonna "informazioni" da aggiungere per i nuovi giochi inseriti
         infocolumn.className="col-lg-4";
         infocolumn.id="infocolumn";
+
         var listnew=document.createElement("ul"); //lista nuova da inserire. per aggiungere elementi alla lista basta fare listnew.appendchild(li), dove li è una entry da creare
         listnew.className="listanuovi";
 
-        infocolumn.textContent=""+nnew+" nuovi giochi";
+        var nnew=0;
+
         //e poi cerco
         for(let element of elements){
             let link=element.children[0].href; //prende i link
@@ -42,22 +39,17 @@ window.onload=function() {
                 content.href=link;
                 entry.appendChild(content);
                 listnew.appendChild(entry);
+                nnew++; //incremento il numero di giochi nuovi
             }
         }
         infocolumn.appendChild(listnew); //listnew contiene tutti i giochi nuovi: verrà utilizzata alla pressione del tasto UPDATE (successivo)
         popgamescolumn.insertAdjacentElement("beforebegin",infocolumn); //inserisco "informazioni" sopra a "popular games"
 
-        //aggiungere un button che permette di aggiungere i giochi nuovi al local storage e modificare di conseguenza il numero totale dei giochi
-
-        //codice per inserire le chiavi nel localStorage
-        /*
-        var elements=document.getElementsByClassName("blog-content")[1].children[0].children;
-        for(let element of elements){
-           let link=element.children[0].href;
-           let text=element.children[0].text;
-           window.localStorage.setItem(text,link);
+       if(nnew!=0){
+            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NUOVI GIOCHI! </h1>");
         }
-        */
+        pos.insertAdjacentHTML("beforeend","<div>"+numactual+" giochi presenti</div>");
+        infocolumn.insertAdjacentHTML("beforebegin",""+nnew+" nuovi giochi");
 
         var btn=document.createElement("button");
         btn.innerHTML="UPDATE";
@@ -76,8 +68,9 @@ window.onload=function() {
                 }
             }
             window.alert("New games added in the local storage!");
+            location.reload();
         }
-        popgamescolumn.insertAdjacentElement("beforebegin",btn); //inserisco un button
+        listnew.insertAdjacentElement("afterend",btn); //inserisco un button
      }
     else{ //se non ci sono le entry nel local storage
         numprev=numactual;//se il  numero di giochi precedente non c'è, lo calcolo ora. Questo è il momento 0: da ora in poi il codice mostrerà i giochi nuovi
@@ -92,4 +85,4 @@ window.onload=function() {
             }
     }
 
-}();
+};
