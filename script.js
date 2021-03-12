@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Script that notices you if there are new games on the site
 // @author       NOED
-// @match        https://steamunlocked.net/all-games/
+// @match        https://steamunlocked.net/all-games
 // @grant        none
 // ==/UserScript==
 
@@ -12,9 +12,11 @@ window.onload=function() {
     'use strict';
 
     var numprev=window.localStorage.getItem("numprev"); //numero di giochi precedenti all'esecuzione di questo script;
-    var elements=document.getElementsByClassName("blog-content")[1].children[0].children; //lista di elementi (giochi presenti)
+    var elements=document.getElementsByClassName("blog-content")[0].children[0].children; //lista di elementi (giochi presenti)
     var numactual=elements.length; //numero di giochi presenti nella pagina appena caricata
     var pos=document.getElementsByClassName("blog-content")[0]; //banner "All Games (A-Z)"
+    console.log("#games before: " + numprev)
+    console.log("#games now: " + numactual)
 
     if(numprev!=null){
 
