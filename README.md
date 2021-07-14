@@ -14,3 +14,6 @@ With this script a notification will appear on the page when new games are relea
 Initially written and used with tampermonkey ("http://tampermonkey.net/").
 
 This script may be subject to changes and updates over time.
+
+##Preview
+![Preview Screenshot](./preview.png)
