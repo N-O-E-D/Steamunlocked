@@ -1,7 +1,7 @@
 # Steamunlocked
 
 With this script a notification will appear on the page when new games are released. It works on https://steamunlocked.net/all-games/. Makes use of window.localStorage to store the games currently present, so be careful not to have the option of deleting data when exiting the browser. The button UPDATE will add new games to local storage, the button CLEAR will clear the local storage.
-Game updates are handled: if a game receives an update (e.g. "CrossCode Free Download (v1.2.0.5)" --> "CrossCode Free Download (v1.4.1-6 & ALL DLC’s)") the script will consider it as a new entry, then added to the list.
+Game updates are handled: if a game receives an update (e.g. "CrossCode Free Download (v1.2.0.5)" --> "CrossCode Free Download (v1.4.1-6 & ALL DLC’s)") the script will consider it as a new entry, then will add it to the list.
 
 
 ## Version 1.0.1
