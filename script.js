@@ -54,10 +54,7 @@ window.onload=function() {
         infocolumn.appendChild(listnew); //listnew contains all new games: useful at the pressure of the UPDATE button 
         popgamescolumn.insertAdjacentElement("beforebegin",infocolumn); //add the new list above "popular games"
 
-       if(nnew!=0){
-            pos.insertAdjacentHTML("beforeend","<h1>"+nnew+" NEW GAMES! </h1>");
-        }
-        infocolumn.insertAdjacentHTML("beforebegin",""+nnew+" new games");
+        infocolumn.insertAdjacentHTML("beforebegin",""+nnew+" new entries");
 
         //now let's handle the the local storage update...
         var updatebtn=document.createElement("button");
