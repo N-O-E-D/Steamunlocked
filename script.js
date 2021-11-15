@@ -4,7 +4,7 @@
 // @version      1.0.1
 // @description  Script that notices you if there are new games on the site
 // @author       NOED
-// @match        https://steamunlocked.net/all-games/
+// @match        https://steamunlocked.net/all-games*/
 // @run-at       document-start
 // @grant        none
 // @require      https://raw.githubusercontent.com/overlib/overlib/master/overlib.js
